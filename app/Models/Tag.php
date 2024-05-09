@@ -18,4 +18,9 @@ class Tag extends Model
     {
         return $this->morphedByMany(Activity::class, 'taggable');
     }
+
+    public function entries()
+    {
+        return $this->morphedByMany(Activity::class, 'taggable');
+    }
 }
