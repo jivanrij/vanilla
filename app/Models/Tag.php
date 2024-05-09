@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Divide\Entry;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,6 +22,6 @@ class Tag extends Model
 
     public function entries()
     {
-        return $this->morphedByMany(Activity::class, 'taggable');
+        return $this->morphedByMany(Entry::class, 'taggable');
     }
 }
