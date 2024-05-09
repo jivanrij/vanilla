@@ -1,21 +1,19 @@
 <?php
 
-namespace App\Nova;
+namespace App\Nova\Divide;
 
-use App\Nova\Attached\Media;
-use App\Nova\Divide\Entry;
+use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Tag extends Resource
+class Entry extends Resource
 {
     /**
      * The model the resource corresponds to.
-     *
-     * @var class-string<\App\Models\Tag>
+     * @var class-string<\App\Models\Divide\Entry>
      */
-    public static $model = \App\Models\Tag::class;
+    public static $model = \App\Models\Divide\Entry::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -43,9 +41,7 @@ class Tag extends Resource
     {
         return [
             ID::make()->sortable(),
-            MorphToMany::make('Posts', 'posts', Post::class),
-            MorphToMany::make('Activities', 'activities', Activity::class),
-            MorphToMany::make('Entries', 'entries', Entry::class),
+            MorphToMany::make('Tags'),
         ];
     }
 
