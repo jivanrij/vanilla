@@ -3,18 +3,21 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphedByMany;
+use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Post extends Resource
+class Tag extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Post>
+     * @var class-string<\App\Models\Tag>
      */
-    public static $model = \App\Models\Post::class;
+    public static $model = \App\Models\Tag::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -42,7 +45,8 @@ class Post extends Resource
     {
         return [
             ID::make()->sortable(),
-            MorphToMany::make('Tags'),
+            MorphToMany::make('Posts', 'posts', Post::class),
+            MorphToMany::make('Activities', 'activities', Activity::class),
         ];
     }
 
