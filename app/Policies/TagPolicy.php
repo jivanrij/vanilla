@@ -63,4 +63,21 @@ class TagPolicy
     {
         return true;
     }
+
+    /**
+     * Disable attaching entries to tags. Nova magically uses this method based on the Resource class.
+     */
+    public function attachPost(User $user): bool
+    {
+        return false;
+    }
+
+    /**
+     * Disable attaching entries to tags. Nova magically uses this method based on the Resource class.
+     * Also if (in this case) the resource is from another namespace.
+     */
+    public function attachEntry(User $user): bool
+    {
+        return false;
+    }
 }
